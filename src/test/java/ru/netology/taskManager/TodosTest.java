@@ -39,24 +39,28 @@ class TodosTest {
     public void shouldSearchQuery1() {
         Task[] expected = {epic};
         Task[] actual = todos.search("Молоко"); // проверка epic
+        Assertions.assertArrayEquals(expected, actual);
     }
 
     @Test
     public void shouldSearchQuery2() {
         Task[] expected = {};
         Task[] actual = todos.search("обеда"); // проверка meeting start
+        Assertions.assertArrayEquals(expected, actual);
     }
 
     @Test
     public void shouldSearchQuery3() {
         Task[] expected = {simpleTask};
         Task[] actual = todos.search("родителям"); // проверка simpleTask
+        Assertions.assertArrayEquals(expected, actual);
     }
 
     @Test
     public void shouldSearchQuery4() {
         Task[] expected = {meeting};
         Task[] actual = todos.search("3й"); // проверка meeting
+        Assertions.assertArrayEquals(expected, actual);
     }
 
 }
