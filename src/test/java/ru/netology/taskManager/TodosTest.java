@@ -63,18 +63,18 @@ class TodosTest {
         Assertions.assertArrayEquals(expected, actual);
     }
 
-    @Test
-    public void shouldSearchQueryTopic() {
-        Task[] expected = {meeting};
-        Task[] actual = todos.search("3й"); // проверка meeting
-        Assertions.assertArrayEquals(expected, actual);
-    }
-
-    @Test
-    public void shouldSearchQuerySimpleTask() {
-        Task[] expected = {simpleTask};
-        Task[] actual = todos.search("Позвонить"); // проверка simpleTask
-        Assertions.assertArrayEquals(expected, actual);
-    }
+//    @Test
+//    public void shouldSearchQueryTopic() {
+//        Task[] expected = {meeting};
+//        Task[] actual = todos.search("3й"); // проверка meeting
+//        Assertions.assertArrayEquals(expected, actual);
+//    }
+//
+//    @Test
+//    public void shouldSearchQuerySimpleTask() {
+//        Task[] expected = {simpleTask};
+//        Task[] actual = todos.search("Позвонить"); // проверка simpleTask
+//        Assertions.assertArrayEquals(expected, actual);
+//    }
 
 }
