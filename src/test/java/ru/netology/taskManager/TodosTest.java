@@ -13,7 +13,7 @@ class TodosTest {
     Meeting meeting = new Meeting(
             555,
             "Выкатка 3й версии приложения",
-            "Приложение НетоБанка",
+            "Приложение НетоБанка установить родителям",
             "Во вторник после обеда"
     );
 
@@ -36,30 +36,44 @@ class TodosTest {
     }
 
     @Test
-    public void shouldSearchQuery1() {
+    public void shouldSearchQuery1TaskEpic() {
         Task[] expected = {epic};
-        Task[] actual = todos.search("Молоко"); // проверка epic
+        Task[] actual = todos.search("Молоко"); // проверка epic (находится 1 задача)
         Assertions.assertArrayEquals(expected, actual);
     }
 
     @Test
-    public void shouldSearchQuery2() {
+    public void shouldNotSearchQueryStart() {
         Task[] expected = {};
-        Task[] actual = todos.search("обеда"); // проверка meeting start
+        Task[] actual = todos.search("обеда"); // проверка meeting start (запрос не должен быть найден)
         Assertions.assertArrayEquals(expected, actual);
     }
 
     @Test
-    public void shouldSearchQuery3() {
-        Task[] expected = {simpleTask};
-        Task[] actual = todos.search("родителям"); // проверка simpleTask
+    public void shouldSearchQueryIfNotExist() {
+        Task[] expected = {};
+        Task[] actual = todos.search("мыло"); // проверка когда не находится ни одна задача
         Assertions.assertArrayEquals(expected, actual);
     }
 
     @Test
-    public void shouldSearchQuery4() {
+    public void shouldSearchQueryIfFSomeResults() {
+        Task[] expected = {simpleTask, meeting};
+        Task[] actual = todos.search("родителям"); // проверка нескольких результатов
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldSearchQueryTopic() {
         Task[] expected = {meeting};
         Task[] actual = todos.search("3й"); // проверка meeting
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldSearchQuerySimpleTask() {
+        Task[] expected = {simpleTask};
+        Task[] actual = todos.search("Позвонить"); // проверка simpleTask
         Assertions.assertArrayEquals(expected, actual);
     }
 
